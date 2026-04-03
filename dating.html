@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>婚恋交友注册系统</title>
+<style>
+    body {
+        font-family: "Microsoft YaHei", sans-serif;
+        color: #000;
+        background-color: #fff;
+        padding: 30px;
+    }
+    
+    .container {
+        width: 600px;
+    }
+    
+    h2 {
+        font-size: 24px;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
+    
+    .form-group {
+        display: flex;
+        align-items: center; /* 默认垂直居中对齐 */
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+    
+    /* 针对包含多行文本框的特定行，使其顶部对齐 */
+    .align-top {
+        align-items: flex-start; 
+    }
+
+    .form-group > label.field-label {
+        width: 100px; /* 固定标签宽度以保证对齐 */
+        text-align: left;
+        flex-shrink: 0;
+    }
+
+    .input-item {
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .input-item input[type="radio"],
+    .input-item input[type="checkbox"] {
+        margin-right: 5px;
+        cursor: pointer;
+    }
+
+    /* 下拉框和输入框样式 */
+    select {
+        padding: 3px;
+        margin-right: 5px;
+        border: 1px solid #767676;
+    }
+
+    input[type="text"] {
+        padding: 3px;
+        border: 1px solid #767676;
+        width: 200px;
+    }
+
+    textarea {
+        border: 1px solid #767676;
+        padding: 5px;
+        resize: none;
+    }
+
+    /* 按钮和链接区域偏移对齐 */
+    .offset-group {
+        margin-left: 100px;
+        margin-bottom: 10px;
+    }
+
+    .register-btn {
+        background-color: #f0f0f0;
+        border: 1px solid #888;
+        padding: 5px 15px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    
+    .register-btn:active {
+        background-color: #e0e0e0;
+    }
+
+    .login-link {
+        color: #4b0082; /* 紫色链接 */
+        text-decoration: underline;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* 底部承诺区域 */
+    .promise-section {
+        margin-top: 40px;
+        margin-left: 100px;
+    }
+
+    .promise-section h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .promise-section ul {
+        padding-left: 20px;
+        margin: 0;
+    }
+
+    .promise-section li {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>青春不常在，抓紧谈恋爱</h2>
+
+    <form id="datingForm">
+        <div class="form-group">
+            <label class="field-label">性别：</label>
+            <label class="input-item"><input type="radio" name="gender" value="male"> 男</label>
+            <label class="input-item"><input type="radio" name="gender" value="female"> 女</label>
+        </div>
+
+        <div class="form-group">
+            <label class="field-label">生日：</label>
+            <select id="year"><option value="">---请选择年份---</option></select>
+            <select id="month"><option value="">---请选择月份---</option></select>
+            <select id="day"><option value="">---请选择日---</option></select>
+        </div>
+
+        <div class="form-group">
+            <label class="field-label">所在地区：</label>
+            <input type="text" placeholder="请输入地区名称">
+        </div>
+
+        <div class="form-group">
+            <label class="field-label">已婚状况：</label>
+            <label class="input-item"><input type="radio" name="marital" value="married"> 已婚</label>
+            <label class="input-item"><input type="radio" name="marital" value="unmarried"> 未婚</label>
+            <label class="input-item"><input type="radio" name="marital" value="divorced"> 离婚</label>
+        </div>
+
+        <div class="form-group">
+            <label class="field-label">学历：</label>
+            <input type="text">
+        </div>
+
+        <div class="form-group">
+            <label class="field-label">喜欢的类型：</label>
+            <label class="input-item"><input type="checkbox" name="type" value="charming"> 妩媚的</label>
+            <label class="input-item"><input type="checkbox" name="type" value="cute"> 可爱的</label>
+            <label class="input-item"><input type="checkbox" name="type" value="fresh"> 小鲜肉</label>
+            <label class="input-item"><input type="checkbox" name="type" value="mature"> 老腊肉</label>
+            <label class="input-item"><input type="checkbox" name="type" value="all"> 都喜欢</label>
+        </div>
+
+        <div class="form-group align-top">
+            <label class="field-label">个人介绍：</label>
+            <textarea rows="4" cols="35"></textarea>
+        </div>
+
+        <div class="offset-group">
+            <button type="button" class="register-btn" id="registerBtn">免费注册</button>
+        </div>
+
+        <div class="offset-group" style="display: flex; align-items: center; margin-top: 10px;">
+            <input type="checkbox" id="agreement" style="margin-right: 5px; cursor: pointer;">
+            <label for="agreement" style="cursor: pointer; font-size: 16px;">我同意注册条款和会员加入标准</label>
+        </div>
+
+        <div class="offset-group" style="margin-top: 10px;">
+            <a class="login-link" id="loginBtn">我是会员，立即登录</a>
+        </div>
+    </form>
+
+    <div class="promise-section">
+        <h3>我承诺</h3>
+        <ul>
+            <li>年满18岁、单身</li>
+            <li>抱着严肃的态度</li>
+            <li>真诚寻找另一半</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    // === 1. 年月日联动逻辑 ===
+    const yearSelect = document.getElementById("year");
+    const monthSelect = document.getElementById("month");
+    const daySelect = document.getElementById("day");
+
+    // 填充年份 (例如从当前年份推算到 1960 年)
+    const currentYear = new Date().getFullYear();
+    for (let i = currentYear; i >= 1960; i--) {
+        yearSelect.add(new Option(i, i));
+    }
+
+    // 填充月份 (1-12)
+    for (let i = 1; i <= 12; i++) {
+        monthSelect.add(new Option(i, i));
+    }
+
+    // 初始状态填充 1-31 日
+    populateDays(31);
+
+    // 根据选中的年份和月份动态计算当月天数
+    function updateDays() {
+        const year = yearSelect.value;
+        const month = monthSelect.value;
+        
+        // 清空现有的“日”选项
+        daySelect.innerHTML = '<option value="">---请选择日---</option>';
+        
+        if (year && month) {
+            // 获取该年该月的天数
+            const daysInMonth = new Date(year, month, 0).getDate();
+            populateDays(daysInMonth);
+        } else {
+            // 如果没选全，默认给31天作为占位
+            populateDays(31);
+        }
+    }
+
+    function populateDays(days) {
+        for (let i = 1; i <= days; i++) {
+            daySelect.add(new Option(i, i));
+        }
+    }
+
+    // 监听年份和月份的改变
+    yearSelect.addEventListener("change", updateDays);
+    monthSelect.addEventListener("change", updateDays);
+
+
+    // === 2. 注册和登录按钮交互逻辑 ===
+    document.getElementById("registerBtn").addEventListener("click", function() {
+        const agreement = document.getElementById("agreement").checked;
+        if (!agreement) {
+            alert("请先勾选：我同意注册条款和会员加入标准！");
+            return;
+        }
+        alert("注册信息已提交！（前端功能演示）");
+    });
+
+    document.getElementById("loginBtn").addEventListener("click", function() {
+        // 在真实的系统中，这里应该跳转到登录页面 (window.location.href = '/login.html') 
+        // 或者是弹出一个登录的弹窗，这里用 prompt 模拟一下登录行为
+        const username = prompt("【登录演示】\n请输入您的会员账号：");
+        if(username) {
+            const password = prompt("请输入密码：");
+            if(password) {
+                alert("欢迎回来，" + username + "！");
+            }
+        }
+    });
+</script>
+</body>
+</html>
